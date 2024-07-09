@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <title>Cut the Rope: Time Travel</title>
+    <meta name="description" content="Play Cut the Rope: Time Travel! Join Om Nom as he travels back in time to feed his ancestors with candy. Cut the Rope: Time Travel is a completely new adventure filled with time-traveling, candy-crunching, physics-based action!">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
+    <meta property="og:title" content="Cut the Rope: Time Travel" />
+    <meta property="og:type" content="game" />
+    <meta property="og:description" content="Join Om Nom as he travels back in time to feed his ancestors with candy. Cut the Rope: Time Travel is a completely new adventure filled with time-traveling, candy-crunching, physics-based action!">
+    <meta property="og:site_name" content="Cut the Rope: Time Travel" />
+
+    <link href="css/ctr.css?238" rel="stylesheet" type="text/css">
+    <script src="scripts/sm2.js?238" type="text/javascript"></script>
+    <script src="scripts/libraries.js?238" type="text/javascript"></script>
+    <script src="scripts/ctr-time.js?238" type="text/javascript"></script>
+ 
+ 
+    <noscript>
+        <link href="css/nojavascript.css?238" rel="stylesheet" type="text/css">
+    </noscript>
+</head>
+<body class="ctrCursor">
+  <div id="lang">
+
+    <style  type="text/css">
+        .hideBeforeLoad, #loaderWindow, #popupWindow { display: none; }  
+    </style>
+
+    <div id="gameContainer">
+        <div id="gameArea" class="hideBeforeLoad">
+            <canvas id="c"></canvas>
+            <div id="loadingPanel" class="panel"></div>
+            <div id="startBackground" class="panel"></div>
+            <div id="menuBackground" class="panel"></div>
+            <div id="levelBackground" class="panel">
+                <canvas id="levelCanvas"></canvas>
+                <div id="levelTape" class="levelTape"></div>
+                <div id="doorGradient"></div>
+            </div>
+            <div id="shadowPanel" class="panel">
+                <canvas id="shadowCanvas" width="1024" height="576"></canvas>
+            </div>
+            <div id="menuPanel" class="panel seethrough">
+                <div class="panelContent">
+                    <div id="menuLogo" ></div>
+                    <div id="menuBtnVbox" class="fBtnVBox">
+                        <div id="playBtn" class="fBtn"><img src="" /></div>
+                        <div id="optionsBtn" class="fBtn"><img src="" /></div>
+                    </div>
+                </div>
+                <div id="miniOptionsMenu">
+                    <div id="optionSd"></div>
+                    <div id="optionHd"></div>
+                    <div id="optionSound" class="ctrPointer"></div>
+                    <div id="optionMsg"></div>
+                </div>
+            </div>
+
+            <div id="boxPanel" class="panel seethrough">
+                
+                <canvas id="boxCanvas" width="1024" height="576"></canvas>
+                <div id="boxEnterCodeButton" class="fBtn ctrPointer"></div>
+                <div id="boxScore" class="hideFromMouse"><img src="" /></div>
+
+                <div id="boxNavBack">
+                    <div class="boxNavDisabled">
+                    </div>
+                </div>
+                <div id="boxNavForward">
+                    <div>
+                    </div>
+                </div>
+                <div id="boxBack" class="bBtn">
+                </div>
+            </div>
+            <div id="codePanel" class="panel seethrough">
+                <input id="codeText" type="text" />
+                <div id="codeOkButton" class="ctrPointer"></div>
+                <div id="codeMessage"></div>
+                <div id="codeBack" class="bBtn"></div>
+            </div>
+            <div id="levelPanel" class="panel">
+                <div id="levelScore">
+                    <img src="" /></div>
+                <div id="levelBack" class="bBtn">
+                </div>
+                <div id="levelOptions"></div>
+                <div id="levelResults">
+                    <div id="resultStatus"><img src="" /></div>
+                    <div class="starCase">
+                        <div id="resultStar1" class=""></div>
+                        <div id="resultStar2" class=""></div>
+                        <div id="resultStar3" class=""></div>
+                    </div>
+                    <div id="resultTicker">
+                        <img id="resultTickerLabel" />
+                        <img id="resultTickerValue" />
+                        <img id="resultTickerMessage" />
+                    </div>
+                    <div class="line"></div>
+                    <div id="resultScore"></div>
+                    <div class="btnCase">
+                        <div id="replayBtn" class="sBtn"><img src="" /></div>
+                        <div id="lrMenuBtn" class="sBtn"><img src="" /></div>
+                        <div id="nextBtn" class="sBtn"><img src="" /></div>
+                    </div>
+                    <div id="resultImproved"></div>
+                </div>
+            </div>
+
+            <div id="gameCompletePanel" class="panel">
+                <div id="congrats"></div>
+                <div id="finalScore"><img src="" /></div>
+                <a href="../../" id="finalFunBtn" class="lBtn" target="_blank"><img src="" /><div id="funOmNom"></div></a>
+                <div id="gameCompleteBack" class="bBtn"></div>
+            </div>
+
+            <div id="optionsPanel" class="panel">
+                <div class="fBtnVBox">
+                    <div id="optionsTitle"><img src="" /></div>
+                    <div id="soundBtn" class="mini-button ctrCursor"><div id="options-speaker"></div><div class="options-x"></div></div>
+                    <div id="musicBtn" class="mini-button ctrCursor"><div id="options-note"></div><div class="options-x"></div></div>
+                    <div id="langBtn" class="fBtn"><img src="" /><div id="flag"></div></div>
+                    <div id="resetBtn" class="fBtn"><img src="" /></div>
+                    <div id="creditsBtn" class="fBtn"><img src="" /></div>
+                    <div id="dragBtn"><img id="dragText" /><div class="options-check-disabled"></div></div>
+                    <div id="cutBtn" class="ctrCursor"><img id="cutText" /><div class="options-check"></div></div>
+                </div>
+                <div id="optionsBack" class="bBtn"></div>
+            </div>
+            <div id="d" class="panel ctrPointer">
+                <img id="dmsg" />
+                <div id="dframe">
+                    <div id="dpic"></div>
+                </div>
+                <div id="dshareBtn" class="fBtn"><img src="" /><div id="dfb"></div></div>
+            </div>
+            <div id="gameBtnTray">
+                <div id="gameMsg" class="allSound"></div>
+                <div id="gameSound" class="ctrPointer allSound"></div>
+                <div id="gameRestartBtn" class="ctrPointer"></div>
+                <div id="gameMenuBtn" class="ctrPointer"></div>
+            </div>
+            <div id="levelMenu">
+                <div class="fBtnVBox">
+                    <div id="continueBtn" class="fBtn"><img src="" /></div>
+                    <div id="skipBtn" class="fBtn"><img src="" /></div>
+                    <div id="selectBtn" class="fBtn"><img src="" /></div>
+                    <div id="menuBtn" class="fBtn"><img src="" /></div>
+                </div>
+            </div>
+
+            <div id="boxCutter">
+            </div>
+            <div id="tapeRoll">
+            </div>
+            <div id="video"></div>
+            <div id="fadeToBlack" class="panel"></div>
+        </div>
+        <canvas id="e"></canvas>
+
+        <div id="loaderWindow">
+            <div id="loaderBubbles">
+                <img id="loaderLogo" src="images/page/loader-logo.png" />
+                <div id="loaderCanvasHost">
+                    <canvas id="loaderCanvas"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div id="lsWarning" style="display:none;">
+            <p>
+                Your browser settings won't allow us to save your game progress after you
+                close this tab. This might happen if you've disabled cookies or site data
+                for some domains.
+            </p>
+            <p>Don't worry, you can still play!</p>
+            <p>
+                Consider modifying your settings to allow <br/>
+                our domain ( <span id="lsDomain"></span> ) <br/>
+                to store site data so we can save your progress.
+            </p>
+
+            <a id="lsChromeInfoLink" target="_blank" href="http://support.google.com/chrome/bin/answer.py?hl=en&answer=95647">
+                Details on how to manage your <br/> cookies and site data in Google Chrome
+            </a>
+            <div class="mBtn" id="lsOkButton"><span>OK</span></div>
+        </div>
+    </div>
+<div id="popupWindow">
+        <div class="popupOuterFrame">
+            <div class="popupInnerFrame" id="slowComputer">
+                <div class="fBtn" id="slowComputerBtn"><img src=""></div>
+            </div>
+            <div class="popupInnerFrame" id="resetGame">
+                <div id="resetText"></div>
+                <div class="mBtn" id="resetYesBtn"><img src="data:image/png;base64,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" style="width: 63px; height: 63px;"></div>
+                <div class="mBtn" id="resetNoBtn"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAA/CAYAAACW2FpzAAAAAXNSR0IArs4c6QAACX5JREFUaEPtmHtQk9kZxp+EJCQgIQQUNSBeuCgsaQG7IMqC4y5mHCHUG2XQrVV2VpRR7Cytl2pncNWpxet6oaOrjrCKoFvF8RZKdqUzoCgXWRaCjBcEgghIQkIukHypJyUMK4SyNuPUad6Z/POdnPf8zvNezvk+Gt4To70nnLCD2jpSdkXtitpaAVv7s+eoXVFbK2Brf/83OToXwK8AOAJoAlAIQGNrNYm//0bR1QB+7+HhwWWz2WhpaaEA/B3AHwEYbA37tqAeAL5ZsWLFB1lZWe6Ojo70CxcudKenp3cBWAeg5H8FVAgg+/z584FJSUmuBEqpVBoDAwNb5HL5CQB/edegLgDmAHAH0Ang3utw9wAguXmo4NIl32VLl/IsUImJifL8/PzvAJC0sGn4Rws9gfsrgAgSWr1eTxb+AUAGl4lJPf04cfLkSZ+UlBSSBmY7fPhwR3p6egOAZADPrag6HgAdwCsA/WNVfjRQMZ1OP3TixAmXefPmOclkMt369etV7e3tlzw5yG/XYt+fduzw25WZOcmymFQqVS1YsIBUfxqAO29AfDig9LSBIu4A8E8AeQNRGpV5NNAvvLy80mQymZezs7MD8XL69OnOtWvXPnWk46yegmjp0uXBly7lT7Ws8PjxY92sWbPk/f39O0mxDVk5mOS0r6+vt1gsZjGZTNTU1Bhu3LhBWtkDAH9+HYXG0UhHAz0aExMjLi4u9qLTSaQAjUZjjIqKelJZWVkNgB0QMNPv3r27fq6uruaNdHR09IeEhLS2trZ+BeDAwMJk7JiXl1esVCqd5OfnxybPKYpCYWFhd0pKSk9XV1cpgM8BqKzBWgNlAMhZuXJldE5OzmBoiZNTp77u+OyzlEYaoGNzHPl375b7C4VCJzKm1WqpiIiIlpqamouv9/WHgUVXAthy5syZCatXryb5+RO7fv26Ij4+voOiqOwhmxvGaw2UFFLOli1bQvfu3es5dFZbW1vf7NmzZW1yucYE0C9fvjxjyZIl5P9mlaKioppLS0uvA0h9HX4/sreEhISp+fn53kwmc8T1UlNT5dnZ2U8BfPr692QkVa2BzgBw7tChQ36bNm0apsKGDRueHT9+vJ0Uxb59+7wyMjImW5wvXLiwVSKR3AawlvRTPp+//P79+xOnT5/OsRbWR48eaUNCQuQajeYgSZOfAxpEFM3NzfVJTk7mvznx9u3b3SKR6DERMT093fPgwYM+I4DuJZvdsWPHtMzMzImWcYlEoqioqOjdvHnzJDab/e/kB5CQkNB69epVcqIRVYf1YGuKhgI4U1hYOCUuLm6woVucdnd3G8LDw2WNjY3qVatWjT937hyJgNmGKPo9m83eWVVVJZg5c6ZZzcrKyt7o6OgGtVrdl5ub65ucnDzYg7OzsztTU1MfASA5TdLgJ2YNNBrAUalU6jN//nxyOg2z7du3N+/Zs6clMTFxfF5enu8IoC/CwsI+LSsrE5Dc1Ov1VELCrxtv3bqppAH0OfPmOf9DIgngcDhmVe/cudMTExPTPJDbpL+OCXQROZVKSkq8o6KiRgStqqrqDQ0NrVu2bBmvoKCAFM2biurEYnHClStXzPlbXV3dGxoa1sCnU3qdEQaOh4drdXV1gEAgIFdElJaWqubOnSt/fWJtBCAZK+hKBoOxs6KiYrJQKHQmk4xGI9RqtdHSMwfC3EAqvaioKGAEULpYLP74ypUrXmSsrKxMFRkZ+ZgBPDMAWh6PF1xbW+svEAhYZLyoqEgRGxv7kgFsMgC3xgr6OyaTubWiokIQHBxs7pHt7e19R44cad++fftkJycnc4MvLi5WSqXSnt27d3uPAOrwySex8yWS21PIGNlkWlpa07nc3E6T0UglJSVNOHv27DQWi2VOv6ys/W0ZGV+88mRgY7sB0rGCpnFdXDZXVVcLpk+fbg5NY2OjNjQ0tL6goGCaSCRyG1DZpFAojO7u7uSAMFtsbGxrUVHRbTrQN1Eg+PjH2tqpPB7PPN7X12d68OCBmsyJiIgYx+fzB59/9FHMo/J7ZeoQN6yp7EbNWEHT+Xz+xpqaGoElNPX19drAwMBakUjkeu3aNT8GgzGsEPV6vSkyMvJ5ZWXld+4MvOwyQHzt2rXxixcvHtbihoJcvXq1i7QnDxbk812xvKAD6rGCZnh6em6oq6sTWHYtk8m0QUFBdRRFUYWFhb5xcXFmVYfa8+fP9YGBgU2G3t7vfVxwv1GFjDlz51JFEom/k5PTYM8cOofcD6JjYhoa6+pYflxcrO8BudAMM2vtaauPj886AmrJx+bmZt3s2bMbXr58qQsLC3ORSqX+XC53MOTEc15eXmdSUlKnJwPfTOXi26Ze5LzQA5+nprod3L/fx9KKLBQGg8G0Zs2apzk5OYopHNAnOmJ1uQIPfw7ol2FhYb8tLS0VWJK9ra1N/2F4uKy1udloAoxbt22buGdIEZFi+Sg6uuFhZaWDPw/bZAp8K+Qhq7kX4u5+vIqPj+eRQvT392c7ODjQiJL7Dxx4cfzYsQ53Jnhezsh9qEDmSJDkmTVFj4pEooSbN28KLBObmpp0QqGwHqoeDWhwUoFOnTp50nvRokU8lUplzNy1S56bk9MziYU+Pw6SSpR4KnTFNCMNpzp0ELzUQclgOTL8/fwdGUwG5G1yQ2d7e58bA9zJTpBxuVhT1mK+9Y9o1kD/FhUVtbCkpGTwDC8vL1eHh4c/4QGFk10w64kaAToTdPwJE5h6jY7qVfcYPFlw9+TgYo0S2yyrBbsiDMCXWgNmvNJCq6DM57iJAzh4OGGcCxNyBxrSHypQZQ3SqqLjHHBCQ2PEfHX4sJtYLHYzGAxUZuauttOnv9Z6OmLLFA6USgrHlVrQ1f3Q0QE6nyzKQB2ThXVVnSAnzKD9ggOBkYVUUIg00cCjkUjSoKPRUA8Tjv2gRMVokFZBZ7pgd4sGiWojXvH4fKbBQJnUPQqThyMcvJ2RWvUKZUFu+I2DCckmE8h91UADHlJAVq0S5FY1ogn58DL1w9sIMGgmdP2oBrmEjOltdcTQ/5KPSL0R2QodWCo9NHSA5soBdxwD1Y4OWFutgIKQBHHBp5swgUaHPkCJ5wWA8T8p87bjVt+ZPnDDYpMRKTQ6JtFNoEBDowE4UKcAeV965zbqJx1fPrhMAzwZNBhVbpA/ewbdOyccWPBtvz29c147qK0ltytqV9TWCtjanz1H7YraWgFb+7PnqF1RWytga3/2HLUramsFbO3vvcnRfwElg7NtI4kH2gAAAABJRU5ErkJggg==" style="width: 42px; height: 63px;"></div>
+                <div id="resetHoldYes"></div>
+            </div>
+            <div class="popupInnerFrame" id="missingStars">
+                <div id="missingLine1"></div>
+                <div id="missingCount"><div id="missingStar"></div></div>
+                <div id="missingLine2"></div>
+                <div id="missingLine3"></div>
+                <div class="mBtn" id="missingOkBtn"></div>
+            </div>
+        </div>
+    </div>
+
+  <div id="upgrade">
+        <div id="upgrade-header"></div>
+        <a id="upgrade-button" href="http://windows.microsoft.com/ie"></a>
+    </div>
+</body>
+</html>
