@@ -6,7 +6,6 @@ body {
 }
 
 canvas {
-	background-color: black;
-	margin-left: 600px;
+	background-color: black; 
 	margin-top: 150px;
 }
